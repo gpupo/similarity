@@ -1,0 +1,12 @@
+{
+    "name": "gpupo/similarity",
+    "description": "Calculate the similarity between strings",
+    "keywords": ["similarity", "levenshtein"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": { "Gpupo\\Similarity": "src" }
+    }
+}

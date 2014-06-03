@@ -1,0 +1,32 @@
+
+
+Gpupo\Tests\Similarity\Input\Decorator
+ [x] Clean characters
+ [x] Clean numbers
+
+Gpupo\Tests\Similarity\Input\InputNumber
+ [x] Clean ignored characters
+
+Gpupo\Tests\Similarity\Input\InputString
+ [x] Clean ignored characters
+ [x] Clean stopwords
+
+Gpupo\Tests\Similarity\SimilarNumber
+ [x] Success to find similarity
+ [x] Success to find proximity
+ [x] Success to find proximity with distant numbers
+
+Gpupo\Tests\Similarity\SimilarText
+ [x] Success to find percentage similarity
+ [x] Success to find percentage with texts with no similarity
+ [x] Success to find the levenshtein distance
+
+Gpupo\Tests\Similarity\Similarity
+ [x] Success on assert similarities with strings
+ [x] Success in asserting that the phrase is different
+ [x] Success on assert similarities with numbers
+ [x] Success on assert similarities with approximate numbers
+ [x] Ability to increase the accuracy
+ [x] Ability to decrease the accuracy
+ [x] Ability to inject stopwords
+

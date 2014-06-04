@@ -26,6 +26,7 @@ Gpupo\Tests\Similarity\Similarity
  [x] Success in asserting that the phrase is different
  [x] Success on assert similarities with numbers
  [x] Success on assert similarities with approximate numbers
+ [x] Success on assert with different numbers
  [x] Ability to increase the accuracy
  [x] Ability to decrease the accuracy
  [x] Ability to inject stopwords

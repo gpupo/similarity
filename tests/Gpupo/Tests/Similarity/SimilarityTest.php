@@ -42,6 +42,14 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider dataProviderDifferentNumber
+     */
+    public function testSuccessOnAssertWithDifferentNumbers($a, $b)
+    {
+        $s = new Similarity();
+        $this->assertFalse($s->setNumberValues($a, $b)->hasSimilarity());
+    }
+    /**
      * @dataProvider dataProviderSimilarStrings
      */
     public function testAbilityToIncreaseTheAccuracy($a, $b)
@@ -109,6 +117,7 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
+    
     public function dataProviderSimilarStringsWithStopWords()
     {
         return array(
@@ -122,6 +131,7 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
+    
     public function dataProviderDifferentStrings()
     {
         return array(
@@ -137,6 +147,20 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function dataProviderDifferentNumber()
+    {
+        return array(
+            array(20,2),
+            array(20,202),
+            array(20,02),
+            array(10,105),
+            array(100,205),
+            array('100',205),
+            array('100B',205),
+            array('100 B',205),
+        );
+    }
+    
     public function dataProviderApproximateNumber()
     {
         return array(

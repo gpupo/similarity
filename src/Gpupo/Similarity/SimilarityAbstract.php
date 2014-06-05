@@ -52,7 +52,7 @@ abstract class SimilarityAbstract
 
     protected function factoryExpert($name)
     {
-        $expertObject = __NAMESPACE__ . '\\Similar' . $name;
+        $expertObject = __NAMESPACE__ . '\\Similar' . ucfirst($name);
 
         $expert =  new $expertObject($this->getInput(), $this->getAccuracy());
 

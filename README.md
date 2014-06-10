@@ -26,7 +26,7 @@ Calculate the similarity between strings or numbers
 ```PHP
 
 	$s = new Similarity();
-    $result = $s->setValues($stringA, $stringB)->setAccuracy(80)
+    $result = $s->setValues($stringA, $stringB)->setAccuracy(60)
     	->setStopwords($stopwordsList)->hasSimilarity();    
 ```
 
@@ -60,6 +60,11 @@ The recommended way to install is [through composer](http://getcomposer.org).
 To run the test suite, you need PHPUnit.
 
     $ phpunit
+    
+or see the testdox output
+
+    $ phpunit --testdox    
+    
 	    
 ### Current Results
 	    

@@ -1,6 +1,6 @@
 {
     "name": "gpupo/similarity",
-    "description": "Calculate the similarity between strings",
+    "description": "Calculate the similarity between strings and numbers",
     "keywords": ["similarity", "levenshtein"],
     "license": "MIT",
     "require": {

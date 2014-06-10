@@ -8,13 +8,13 @@ use Gpupo\Similarity\Input\InputNumber;
 class Similarity extends SimilarityAbstract implements SimilarInterface
 {
     const MODE_STRING = 'text';
-    
+
     const MODE_NUMBER = 'number';
 
     protected $mode;
 
     protected $expert;
-    
+
     protected function getMode()
     {
         if ($this->mode == self::MODE_NUMBER) {
@@ -28,7 +28,7 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
     {
         $this->mode = $mode;
         $this->expert = null;
-        
+
         return $this;
     }
 
@@ -38,17 +38,17 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
         $this->input = $input;
 
         $this->setMode(self::MODE_STRING);
-        
+
         return $this;
     }
 
     public function setStopwords(Array $list)
     {
         $this->getInput()->setStopwords($list);
-        
+
         return $this;
     }
-    
+
     public function setNumberValues($a, $b)
     {
         $input = new InputNumber($a, $b);
@@ -64,18 +64,18 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
         if (!$this->expert) {
             $this->expert = $this->factoryExpert($this->getMode());
         }
-        
+
         return $this->expert;
     }
-    
+
     public function hasSimilarity()
     {
         return $this->getExpert()->hasSimilarity();
     }
-    
+
     public function __toArray()
     {
         return  $this->getExpert()->__toArray();
     }
-    
+
 }

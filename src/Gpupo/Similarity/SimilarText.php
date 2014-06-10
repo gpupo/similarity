@@ -9,7 +9,7 @@ class SimilarText extends SimilarityAbstract
         if ($this->getPercent() > $this->getAccuracy()) {
             return true;
         }
-        
+
         if ($this->isApproximate()) {
             return true;
         }
@@ -43,7 +43,7 @@ class SimilarText extends SimilarityAbstract
             $this->getInput()->getSecond()
         );
     }
-    
+
     public function getProximityCalculation()
     {
         $calc = array(
@@ -54,8 +54,8 @@ class SimilarText extends SimilarityAbstract
         $calc['ld'] = $this->getLevenshteinDistance();
         $calc['hardDistance'] = $this->getLevenshteinHardDistance();
         $calc['hardDifference'] = ($calc['hardDistance']/$calc['limit']['hardDivider']) + 0.5;
-        
-        if ($calc['hardDifference'] > $calc['ld'] 
+
+        if ($calc['hardDifference'] > $calc['ld']
             && $calc['hardDifference'] >= ($calc['limit']['maxDifference']-1) ) {
             $calc['mode'] = 'hard';
             $calc['difference'] = $calc['hardDifference'];
@@ -79,7 +79,7 @@ class SimilarText extends SimilarityAbstract
 
         return $calc;
     }
-    
+
     public function calculatePercent($stringA, $stringB)
     {
         $percent = 0;
@@ -102,7 +102,7 @@ class SimilarText extends SimilarityAbstract
 
         return max($a);
     }
-    
+
     public function __toArray()
     {
         return array_merge(parent::__toArray(), array(

@@ -14,8 +14,7 @@ class InputStringTest extends TestCaseAbstract
         $i = new InputString($string, $string);
         $this->assertEquals($expected, $i->getFirst());
     }
-    
-    
+
     /**
      * @dataProvider dataProviderStringsWithStopwords
      */

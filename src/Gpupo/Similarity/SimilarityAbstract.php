@@ -7,7 +7,7 @@ Use Gpupo\Similarity\Input\InputInterface;
 abstract class SimilarityAbstract
 {
     const ACCURACY_DEFAULT = 60;
-    
+
     protected $input;
 
     protected $accuracy;
@@ -27,7 +27,7 @@ abstract class SimilarityAbstract
 
         return $this;
     }
-    
+
     public function isApproximate()
     {
         $calc = $this->getProximityCalculation();
@@ -74,7 +74,7 @@ abstract class SimilarityAbstract
     {
         return json_encode($this->__toArray());
     }
-    
+
     public function __toArray()
     {
         return array(

@@ -27,7 +27,7 @@ class SimilarTextTest extends \PHPUnit_Framework_TestCase
 
         $this->assertLessThan($percent, $s->getPercent());
     }
-    
+
     /**
      * Check the Success to find the distance
      *
@@ -71,7 +71,7 @@ class SimilarTextTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-    
+
     public function dataProviderStringsWithDistance()
     {
         return array(

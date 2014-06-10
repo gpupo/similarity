@@ -22,7 +22,7 @@ class TestCaseAbstract extends \PHPUnit_Framework_TestCase
             array('Xorg Some - $ % ] ( ) s#tring', 'Xorg Some string'),
         );
     }
-    
+
     public function dataProviderNumbersWithIgnoredCharacters()
     {
         return array(

@@ -55,26 +55,26 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
     public function testAbilityToIncreaseTheAccuracy($a, $b)
     {
         $s = new Similarity();
-        
+
         foreach (range(80, 100) as $number) {
             $s->setAccuracy($number);
             $this->assertFalse($s->setValues($a, $b)->hasSimilarity(), $s);
         }
     }
-       
+
     /**
      * @dataProvider dataProviderDifferentStrings
      */
     public function testAbilityToDecreaseTheAccuracy($a, $b)
     {
         $s = new Similarity();
-        
+
         foreach (range(1, 39) as $number) {
             $s->setAccuracy($number);
             $this->assertTrue($s->setValues($a, $b)->hasSimilarity(), $s);
-        }        
+        }
     }
-    
+
     /**
      * @dataProvider dataProviderSimilarStringsWithStopWords
      */
@@ -85,12 +85,10 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($s->setValues($a, $b)->setStopwords($stopwordsList)
             ->hasSimilarity(), $s);
     }
-    
+
     public function dataProviderSimilarStrings()
     {
         return array(
-            array('Ola senhor José', 'Ola senhora Josefina'),
-            array('OLA SENHOR JOSÉ', 'Ola senhora Josefina'),
             array(
                 'Padre Anchieta 1873 - Champagnat',
                 'Champagnat - Padre Anchieta 1873',
@@ -117,7 +115,7 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-    
+
     public function dataProviderSimilarStringsWithStopWords()
     {
         return array(
@@ -131,7 +129,7 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
             ),
         );
     }
-    
+
     public function dataProviderDifferentStrings()
     {
         return array(
@@ -160,7 +158,7 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
             array('100 B',205),
         );
     }
-    
+
     public function dataProviderApproximateNumber()
     {
         return array(

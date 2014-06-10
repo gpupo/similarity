@@ -40,12 +40,12 @@ abstract class InputAbstract extends \ArrayObject
     {
         $this->set('stopwords', $array);
     }
-    
+
     public function getStopwords()
     {
         return $this->get('stopwords');
     }
-    
+
     protected function constructCosts()
     {
         $defaultCosts = array(1, 0, 1);

@@ -9,11 +9,11 @@ class InputString extends InputAbstract implements InputInterface
         $d = new Decorator;
         $value = $this->get($key);
         $string = $d->stripIgnoredCharacters($value);
-        
+
         if ($this->getStopwords()) {
             return $d->stripStopwords($string, $this->getStopwords());
         }
-        
+
         return $string;
     }
 

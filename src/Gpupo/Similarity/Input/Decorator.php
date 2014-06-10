@@ -16,23 +16,24 @@ class Decorator
 
         return $this->stripMultipleSpaces($aplhaNumeric);
     }
-    
+
     public function stripStopwords($string, $list)
     {
         usort($list,function ($a,$b) {
             return strlen($b)-strlen($a);
         });
 
-        $addSpaces = function(&$v) {
+        $addSpaces = function (&$v) {
             $v =  ' ' . trim($v) . ' ';
+
             return $v;
         };
-        
+
         array_walk($list, $addSpaces);
-        
+
         return trim(str_ireplace($list, ' ', $addSpaces($string)));
     }
-    
+
     public function stripMultipleSpaces($string)
     {
         return $this->stripSpaces($string, ' ');

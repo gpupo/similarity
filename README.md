@@ -57,7 +57,10 @@ The recommended way to install is [through composer](http://getcomposer.org).
 
 ## Tests
 
-To run the test suite, you need PHPUnit.
+All tests are run automatically at each commit, on ``OSx`` and ``Linux`` environment in PHP versions ``5.3``, ``5.4``, ``5.5``, ``5.6`` and ``hhvm`` using  [Travis](http://travis-ci.org/gpupo/similarity).
+
+
+To run localy the test suite:
 
     $ phpunit
     
@@ -108,8 +111,6 @@ or see the testdox output
 ## License
 
 MIT, see LICENSE.
-
-
 
 
 ## Links

@@ -1,7 +1,7 @@
 {
     "name": "gpupo/similarity",
-    "description": "Calculate the similarity between strings and numbers",
-    "keywords": ["similarity", "levenshtein", "compare", "distance"],
+    "description": "Calculate the similarity between strings and numbers working in a different way from a diff tool",
+    "keywords": ["similarity", "levenshtein", "compare", "distance", "string", "diff"],
     "license": "MIT",
     "require": {
         "php": ">=5.3.2"

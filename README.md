@@ -2,7 +2,7 @@
 
 Calculate the similarity between strings or numbers
 
-[![Build Status](https://secure.travis-ci.org/gpupo/similarity.png?branch=dev)](http://travis-ci.org/gpupo/similarity)
+[![Build Status](https://secure.travis-ci.org/gpupo/similarity.png?branch=master)](http://travis-ci.org/gpupo/similarity)
 
 
 ## Usage

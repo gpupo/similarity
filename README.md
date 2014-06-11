@@ -12,7 +12,8 @@ Calculate the similarity between strings or numbers
 ```PHP
 
 	$stringA = 'Av. Padre Anchieta 1873 - Champagnat - Curitiba - Brasil';
-	$stringB = 'Brasil - Parana - Curitiba - Champagnat - Rua Padre Anchieta 1873 - Perto da Avenida';
+	$stringB = 'Brasil - Parana - Curitiba - Champagnat - '
+		.'Rua Padre Anchieta 1873 - Perto da Avenida';
 	$stopwordsList = explode(',', 'Av,Rua,Avenida,perto,da,de,e,em,o'); 
 	$s = new Similarity();
     $s->setValues($stringA, $stringB);
@@ -114,6 +115,5 @@ MIT, see LICENSE.
 
 
 ## Links
-
 
 * [Similarity Composer Package](https://packagist.org/packages/gpupo/similarity) on packagist.org

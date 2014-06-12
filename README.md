@@ -2,8 +2,10 @@
 
 Calculate the similarity between strings or numbers
 
-[![Build Status](https://secure.travis-ci.org/gpupo/similarity.png?branch=master)](http://travis-ci.org/gpupo/similarity)
+* Supports [Stopwords](http://en.wikipedia.org/wiki/Stop_words)
+* Working in a different way from a diff tool
 
+[![Build Status](https://secure.travis-ci.org/gpupo/similarity.png?branch=master)](http://travis-ci.org/gpupo/similarity)
 
 ## Usage
 
@@ -42,7 +44,6 @@ Calculate the similarity between strings or numbers
 	$resultD = $s->setNumberValues('20',2)->hasSimilarity(); // false
 	$resultE = $s->setNumberValues('3 - D 4',34)->hasSimilarity(); // true
 ```
-
 
 ## Install
 

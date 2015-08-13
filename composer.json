@@ -24,5 +24,9 @@
         "psr-4": {
             "Gpupo\\Tests\\Similarity\\": "tests"
         }
-    }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability" : "stable"
 }

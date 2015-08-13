@@ -63,7 +63,7 @@ The recommended way to install is [through composer](http://getcomposer.org).
 
 ## Tests
 
-All tests are run automatically at each commit, on ``OSx`` and ``Linux`` environment in PHP versions ``5.3``, ``5.4``, ``5.5``, ``5.6`` and ``hhvm`` using  [Travis](http://travis-ci.org/gpupo/similarity).
+All tests are run automatically at each commit, on ``OSx`` and ``Linux`` environment in PHP versions ``5.3``, ``5.4``, ``5.5``, ``5.6``, ``7.0`` and ``hhvm`` using  [Travis](http://travis-ci.org/gpupo/similarity).
 
 
 To run localy the test suite:
@@ -73,41 +73,6 @@ To run localy the test suite:
 or see the testdox output
 
     $ phpunit --testdox
-
-
-### Current Results
-
-Gpupo\Tests\Similarity\Input\Decorator
- [x] Clean characters
- [x] Clean numbers
-
-Gpupo\Tests\Similarity\Input\InputNumber
- [x] Clean ignored characters
-
-Gpupo\Tests\Similarity\Input\InputString
- [x] Clean ignored characters
- [x] Clean stopwords
-
-Gpupo\Tests\Similarity\SimilarNumber
- [x] Success to find similarity
- [x] Success to find proximity
- [x] Success to find proximity with distant numbers
-
-Gpupo\Tests\Similarity\SimilarText
- [x] Success to find percentage similarity
- [x] Success to find percentage with texts with no similarity
- [x] Success to find the levenshtein distance
-
-Gpupo\Tests\Similarity\Similarity
- [x] Success on assert similarities with strings
- [x] Success in asserting that the phrase is different
- [x] Success on assert similarities with numbers
- [x] Success on assert similarities with approximate numbers
- [x] Success on assert with different numbers
- [x] Ability to increase the accuracy
- [x] Ability to decrease the accuracy
- [x] Ability to inject stopwords
-
 
 ## Contributors
 
@@ -122,3 +87,45 @@ MIT, see LICENSE.
 ## Links
 
 * [Similarity Composer Package](https://packagist.org/packages/gpupo/similarity) on packagist.org
+
+## Test Docs
+
+<!--
+phpunit --testdox | grep -vi php |  sed "s/.*\[*]/-/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\Similarity\\/### /g' | sed '/./,/^$/!d' >> README.md
+-->
+### Input\Decorator
+
+- Clean characters
+- Clean numbers
+
+### Input\InputNumber
+
+- Clean ignored characters
+
+### Input\InputString
+
+- Clean ignored characters
+- Clean stopwords
+
+### SimilarNumber
+
+- Success to find similarity
+- Success to find proximity
+- Success to find proximity with distant numbers
+
+### SimilarText
+
+- Success to find percentage similarity
+- Success to find percentage with texts with no similarity
+- Success to find the levenshtein distance
+
+### Similarity
+
+- Success on assert similarities with strings
+- Success in asserting that the phrase is different
+- Success on assert similarities with numbers
+- Success on assert similarities with approximate numbers
+- Success on assert with different numbers
+- Ability to increase the accuracy
+- Ability to decrease the accuracy
+- Ability to inject stopwords

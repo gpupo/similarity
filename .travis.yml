@@ -16,7 +16,6 @@ matrix:
 before_script:
   - composer self-update
   - composer install --prefer-dist
-  - touch Resources/logs/tests.log
 script: ant test
 notifications:
   email: false

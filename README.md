@@ -70,7 +70,7 @@ To run localy the test suite:
 
     $ phpunit
 
-or see the testdox output
+See the testdox output
 
     $ phpunit --testdox
 

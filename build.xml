@@ -28,7 +28,7 @@
  </target>
  <target name="codeclimate" description="Upload Clover Report">
   <exec executable="${basedir}/vendor/bin/test-reporter">
-   <env key="CODECLIMATE_REPO_TOKEN" value=""/>
+   <env key="CODECLIMATE_REPO_TOKEN" value="151e61809ca79a3168423626f620b40289bd481c993dc52d7f80dca5bf18fadf"/>
   </exec>
  </target>
 </project>

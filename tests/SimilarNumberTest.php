@@ -1,4 +1,17 @@
 <?php
+
+/*
+ * This file is part of gpupo/similarity
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For more information, see
+ * <http://www.g1mr.com/similarity/>.
+ */
+
 namespace Gpupo\Tests\Similarity;
 
 use Gpupo\Similarity\Input\InputNumber;
@@ -8,7 +21,7 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
 {
     protected function outputDebugInformation(SimilarNumber $s)
     {
-        return "\nDebug information:\n" . json_encode($s->__toArray());
+        return "\nDebug information:\n".json_encode($s->__toArray());
     }
     /**
      * @dataProvider dataProviderSimilarNumbers
@@ -43,33 +56,33 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
 
     public function dataProviderSimilarNumbers()
     {
-        return array(
-            array(1, 1),
-            array('2', '2'),
-            array('3 ', '3'),
-            array('3D ', '3'),
-            array('A3D ', '3'),
-            array('3 - D ', '3'),
-            array('3 - D 4', '34'),
-        );
+        return [
+            [1, 1],
+            ['2', '2'],
+            ['3 ', '3'],
+            ['3D ', '3'],
+            ['A3D ', '3'],
+            ['3 - D ', '3'],
+            ['3 - D 4', '34'],
+        ];
     }
 
     public function dataProviderApproximateNumbers()
     {
-        return array(
-            array(12, 1),
-            array(15, 26),
-            array(155, 179),
-            array(1530, 1562),
-        );
+        return [
+            [12, 1],
+            [15, 26],
+            [155, 179],
+            [1530, 1562],
+        ];
     }
     public function dataProviderDistantNumbers()
     {
-        return array(
-            array(14, 1),
-            array(15, 38),
-            array(155, 125),
-            array(1530, 1570),
-        );
+        return [
+            [14, 1],
+            [15, 38],
+            [155, 125],
+            [1530, 1570],
+        ];
     }
 }

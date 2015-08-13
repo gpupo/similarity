@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of gpupo/similarity
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For more information, see
+ * <http://www.g1mr.com/similarity/>.
+ */
+
 namespace Gpupo\Similarity\Input;
 
 abstract class InputAbstract extends \ArrayObject
@@ -8,13 +20,13 @@ abstract class InputAbstract extends \ArrayObject
         Array $costs = null)
     {
         if (is_array($first)) {
-           $array = array_combine(array('first', 'second', 'costs'), $first);
+            $array = array_combine(['first', 'second', 'costs'], $first);
         } else {
-            $array = array(
+            $array = [
                 'first'     => $first,
                 'second'    => $second,
                 'costs'     => $costs,
-            );
+            ];
         }
         parent::__construct($array, parent::ARRAY_AS_PROPS);
 
@@ -48,7 +60,7 @@ abstract class InputAbstract extends \ArrayObject
 
     protected function constructCosts()
     {
-        $defaultCosts = array(1, 0, 1);
+        $defaultCosts = [1, 0, 1];
 
         return $this->setCostsByArray(($this->costs) ? $this->costs : $defaultCosts);
     }

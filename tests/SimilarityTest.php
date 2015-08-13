@@ -1,4 +1,17 @@
 <?php
+
+/*
+ * This file is part of gpupo/similarity
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For more information, see
+ * <http://www.g1mr.com/similarity/>.
+ */
+
 namespace Gpupo\Tests\Similarity;
 
 use Gpupo\Similarity\Similarity;
@@ -88,99 +101,99 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
 
     public function dataProviderSimilarStrings()
     {
-        return array(
-            array(
+        return [
+            [
                 'Padre Anchieta 1873 - Champagnat',
                 'Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Curitiba - Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - PR - Curitiba - Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Parana - Curitiba - Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Av. Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Parana - Curitiba - Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Parana - Curitiba - Champagnat - Padre Anchieta 1873',
-            ),
-        );
+            ],
+        ];
     }
 
     public function dataProviderSimilarStringsWithStopWords()
     {
-        return array(
-            array(
+        return [
+            [
                 'Av. Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Parana - Curitiba - Champagnat - Rua Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Av. Padre Anchieta 1873 - Champagnat - Curitiba - Brasil',
                 'Brasil - Parana - Curitiba - Champagnat - Rua Padre Anchieta 1873 - Perto da Avenida',
-            ),
-        );
+            ],
+        ];
     }
 
     public function dataProviderDifferentStrings()
     {
-        return array(
-            array('Ola senhor José', 'Bom dia senhora Gertrudes'),
-            array(
+        return [
+            ['Ola senhor José', 'Bom dia senhora Gertrudes'],
+            [
                 'Padre Agostinho 187 - Champagnat',
                 'Champagnat - Padre Anchieta 1873',
-            ),
-            array(
+            ],
+            [
                 'Padre Anchieta 187 - Bigorrilho - Curitiba - Brasil',
                 'Brasil - Curitiba - Champagnat - Pe. Anchieta 1873',
-            ),
-        );
+            ],
+        ];
     }
 
     public function dataProviderDifferentNumber()
     {
-        return array(
-            array(20,2),
-            array(20,202),
-            array(20,02),
-            array(10,105),
-            array(100,205),
-            array('100',205),
-            array('100B',205),
-            array('100 B',205),
-        );
+        return [
+            [20,2],
+            [20,202],
+            [20,02],
+            [10,105],
+            [100,205],
+            ['100',205],
+            ['100B',205],
+            ['100 B',205],
+        ];
     }
 
     public function dataProviderApproximateNumber()
     {
-        return array(
-            array(1,2),
-            array(3,4),
-            array('3D',4),
-            array('5D',4),
-            array('1530D',1510),
-        );
+        return [
+            [1,2],
+            [3,4],
+            ['3D',4],
+            ['5D',4],
+            ['1530D',1510],
+        ];
     }
 
     public function dataProviderSimilarNumbers()
     {
-        return array(
-            array(1, 1),
-            array('2', '2'),
-            array('3 ', '3'),
-            array('3D ', '3'),
-            array('A3D ', '3'),
-            array('3 - D ', '3'),
-            array('3 - D 4', '34'),
-            array('Door 4', '4'),
-        );
+        return [
+            [1, 1],
+            ['2', '2'],
+            ['3 ', '3'],
+            ['3D ', '3'],
+            ['A3D ', '3'],
+            ['3 - D ', '3'],
+            ['3 - D 4', '34'],
+            ['Door 4', '4'],
+        ];
     }
 }

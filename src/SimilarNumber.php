@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of gpupo/similarity
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For more information, see
+ * <http://www.g1mr.com/similarity/>.
+ */
+
 namespace Gpupo\Similarity;
 
 class SimilarNumber extends SimilarityAbstract implements SimilarInterface
@@ -19,7 +31,7 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
 
     public function isEquals()
     {
-        if ($this->getInput()->getFirst() == $this->getInput()->getSecond()) {
+        if ($this->getInput()->getFirst() === $this->getInput()->getSecond()) {
             return true;
         }
 
@@ -28,10 +40,10 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
 
     public function getProximityCalculation()
     {
-        $calc = array(
+        $calc = [
             'first'     => $this->getInput()->getFirst(),
             'second'    => $this->getInput()->getSecond(),
-        );
+        ];
         $calc['limit'] = $this->getLimitOfProximity($calc['first'], $calc['second']);
         $calc['difference'] = abs($calc['first'] - $calc['second']);
 
@@ -40,10 +52,10 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
 
     protected function getLimitOfProximity($first, $second)
     {
-        $calc = array(
-            'chars'         => strlen($first . $second),
-            'multiplicator' => (10 - ($this->getAccuracy()/10)),
-        );
+        $calc = [
+            'chars'         => strlen($first.$second),
+            'multiplicator' => (10 - ($this->getAccuracy() / 10)),
+        ];
 
         $calc['maxDifference'] = ($calc['chars'] * $calc['multiplicator']);
 
@@ -52,8 +64,8 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
 
     public function __toArray()
     {
-        return array_merge(parent::__toArray(), array(
-            'proximityCalculation' => $this->getProximityCalculation()
-        ));
+        return array_merge(parent::__toArray(), [
+            'proximityCalculation' => $this->getProximityCalculation(),
+        ]);
     }
 }

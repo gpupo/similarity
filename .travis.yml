@@ -1,22 +1,22 @@
+sudo: false
 language: php
-
 os:
   - linux
-  - osx
-
 php:
-  - 5.3
   - 5.4
   - 5.5
   - 5.6
+  - 7.0
   - hhvm
 
-branches:
-  only:
-    - master
+matrix:
+  allow_failures:
+    - php: hhvm
 
-before_script: composer install --prefer-source
-script: phpunit
-
-# Build environment and configuration documentation: 
-# http://docs.travis-ci.com/user/languages/php/
+before_script:
+  - composer self-update
+  - composer install --prefer-dist
+  - touch Resources/logs/tests.log
+script: ant test
+notifications:
+  email: false

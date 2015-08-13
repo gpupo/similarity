@@ -1,8 +1,20 @@
 <?php
 
+/*
+ * This file is part of gpupo/similarity
+ *
+ * (c) Gilmar Pupo <g@g1mr.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For more information, see
+ * <http://www.g1mr.com/similarity/>.
+ */
+
 namespace Gpupo\Similarity;
 
-Use Gpupo\Similarity\Input\InputInterface;
+use Gpupo\Similarity\Input\InputInterface;
 
 abstract class SimilarityAbstract
 {
@@ -52,7 +64,7 @@ abstract class SimilarityAbstract
 
     protected function factoryExpert($name)
     {
-        $expertObject = __NAMESPACE__ . '\\Similar' . ucfirst($name);
+        $expertObject = __NAMESPACE__.'\\Similar'.ucfirst($name);
 
         $expert =  new $expertObject($this->getInput(), $this->getAccuracy());
 
@@ -77,12 +89,11 @@ abstract class SimilarityAbstract
 
     public function __toArray()
     {
-        return array(
+        return [
             'input'     => $this->input,
             'first'     => $this->getInput()->getFirst(),
             'second'    => $this->getInput()->getSecond(),
             'accuracy'  => $this->getAccuracy(),
-        );
+        ];
     }
-
 }

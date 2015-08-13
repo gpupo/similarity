@@ -9,17 +9,21 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="tests/bootstrap.php"
+         bootstrap="vendor/autoload.php"
 >
     <testsuites>
         <testsuite name="Main Test Suite">
-            <directory>./tests/Gpupo/Tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/</directory>
+            <directory>src/</directory>
         </whitelist>
     </filter>
+    <logging>
+      <log type="coverage-clover" target="build/logs/clover.xml"/>
+      <log type="testdox-text" target="build/logs/testdox.txt"/>
+    </logging>
 </phpunit>

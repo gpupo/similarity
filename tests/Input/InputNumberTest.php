@@ -24,7 +24,6 @@ class InputNumberTest extends TestCaseAbstract
     public function testCleanIgnoredCharacters($number, $expected)
     {
         $i = new InputNumber($number, $number);
-        $this->assertSame($expected, $i->getFirst());
-        //$this->assertEquals($expected, $i->getSecond());
+        $this->assertSame(intval($expected), intval($i->getFirst()));
     }
 }

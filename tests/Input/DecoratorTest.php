@@ -24,7 +24,7 @@ class DecoratorTest extends TestCaseAbstract
     public function testCleanCharacters($string, $expected)
     {
         $d = new Decorator();
-        $this->assertSame($expected, $d->stripIgnoredCharacters($string));
+        $this->assertSame(''.$expected, $d->stripIgnoredCharacters($string));
     }
 
     /**
@@ -33,6 +33,6 @@ class DecoratorTest extends TestCaseAbstract
     public function testCleanNumbers($number, $expected)
     {
         $d = new Decorator();
-        $this->assertSame($expected, $d->onlyNumbers($number));
+        $this->assertSame(intval($expected), intval($d->onlyNumbers($number)));
     }
 }

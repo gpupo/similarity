@@ -28,7 +28,8 @@
  <target name="phpunit" description="Generate Reports">
   <mkdir dir="${basedir}/var/logs"/>
   <touch file="${basedir}/var/logs/test.log"/>
-  <exec executable="${basedir}/vendor/bin/phpunit" outputproperty="log"/>
+  <exec executable="${basedir}/vendor/bin/phpunit" outputproperty="log">
+   </exec>
   <echo message="${log}"/>
   <condition property="onSuccess">
     <matches pattern="OK" string="${log}"/>
@@ -41,12 +42,9 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
- <target name="daily" depends="composer-rebuild" description="Rebuild for new day!">
-  <exec executable="php-cs-fixer">
-    <arg value="fix"/>
-    <arg value="."/>
-  </exec>
-  <exec executable="${basedir}/bin/build-documentation.sh">
+ <target name="rev" description="Build documentation">
+  <exec executable="${basedir}/vendor/gpupo/common-sdk/bin/build-documentation.sh">
+    <arg value="${project.name}"/>
   </exec>
  </target>
  <target name="libraries" description="List dependencies">

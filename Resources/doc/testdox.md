@@ -1,16 +1,13 @@
-Warning:	The Xdebug extension is not loaded
-		No code coverage will be generated.
-
 ### Similarity\Input\Decorator
 
 
 - [x] Clean characters
-- [ ] Clean numbers
+- [x] Clean numbers
 
 ### Similarity\Input\InputNumber
 
 
-- [ ] Clean ignored characters
+- [x] Clean ignored characters
 
 ### Similarity\Input\InputString
 

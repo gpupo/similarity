@@ -3,11 +3,11 @@
     "description": "Calculate the similarity between strings and numbers working in a different way from a diff tool",
     "keywords": ["similarity", "levenshtein", "compare", "distance", "string", "diff"],
     "license": "MIT",
-    "homepage": "http://www.g1mr.com/similarity/",
+    "homepage": "https://opensource.gpupo.com/similarity/",
     "authors": [
         {
             "name": "Gilmar Pupo",
-            "email": "g@g1mr.com"
+            "email": "contact@gpupo.com"
         }
     ],
     "require": {

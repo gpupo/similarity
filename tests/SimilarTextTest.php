@@ -2,14 +2,14 @@
 
 /*
  * This file is part of gpupo/similarity
- *
- * (c) Gilmar Pupo <g@g1mr.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * For more information, see
- * <http://www.g1mr.com/similarity/>.
+ * Created by Gilmar Pupo <contact@gpupo.com>
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ * Para a informação dos direitos autorais e de licença você deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
+ * For more information, see <https://www.gpupo.com/>.
  */
 
 namespace Gpupo\Tests\Similarity;
@@ -51,14 +51,14 @@ class SimilarTextTest extends \PHPUnit_Framework_TestCase
         $i = new InputString($a, $b, [1, 1, 1]);
         $l = new SimilarText($i);
         $result = $l->getLevenshteinDistance();
-        $this->assertEquals($distance, $result);
+        $this->assertSame($distance, $result);
     }
 
     public function dataProviderSimilarStrings()
     {
         return [
             ['Ola senhor José', 'Ola senhora Josefina', 77],
-            ['OLA SENHOR JOSÉ', 'Ola senhora Josefina', 22,77],
+            ['OLA SENHOR JOSÉ', 'Ola senhora Josefina', 22, 77],
             ['Ola senhor José', 'Ola senhorita Josefina', 33, 3],
             ['Ola senhor José', 'Oi Dona Joana', 0, 34],
             [

@@ -2,14 +2,14 @@
 
 /*
  * This file is part of gpupo/similarity
- *
- * (c) Gilmar Pupo <g@g1mr.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * For more information, see
- * <http://www.g1mr.com/similarity/>.
+ * Created by Gilmar Pupo <contact@gpupo.com>
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ * Para a informação dos direitos autorais e de licença você deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
+ * For more information, see <https://www.gpupo.com/>.
  */
 
 namespace Gpupo\Tests\Similarity;
@@ -161,25 +161,25 @@ class SimilarityTest extends \PHPUnit_Framework_TestCase
     public function dataProviderDifferentNumber()
     {
         return [
-            [20,2],
-            [20,202],
-            [20,02],
-            [10,105],
-            [100,205],
-            ['100',205],
-            ['100B',205],
-            ['100 B',205],
+            [20, 2],
+            [20, 202],
+            [20, 02],
+            [10, 105],
+            [100, 205],
+            ['100', 205],
+            ['100B', 205],
+            ['100 B', 205],
         ];
     }
 
     public function dataProviderApproximateNumber()
     {
         return [
-            [1,2],
-            [3,4],
-            ['3D',4],
-            ['5D',4],
-            ['1530D',1510],
+            [1, 2],
+            [3, 4],
+            ['3D', 4],
+            ['5D', 4],
+            ['1530D', 1510],
         ];
     }
 

@@ -47,6 +47,11 @@
     <arg value="${project.name}"/>
   </exec>
  </target>
+ <target name="website" description="Build website">
+ <exec executable="${basedir}/vendor/gpupo/common-sdk/bin/build-website.sh">
+   <arg value="${project.name}"/>
+ </exec>
+</target>
  <target name="libraries" description="List dependencies">
    <echo output="Resources/doc/libraries-list.md" append="false"><!--libraries-list-->
 ## Lista de dependências (libraries)

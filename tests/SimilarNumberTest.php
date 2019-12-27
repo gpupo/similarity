@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\Similarity;
@@ -17,14 +20,16 @@ namespace Gpupo\Tests\Similarity;
 use Gpupo\Similarity\Input\InputNumber;
 use Gpupo\Similarity\SimilarNumber;
 
-class SimilarNumberTest extends \PHPUnit_Framework_TestCase
+/**
+ * @coversNothing
+ */
+class SimilarNumberTest extends \PHPUnit\Framework\TestCase
 {
-    protected function outputDebugInformation(SimilarNumber $s)
-    {
-        return "\nDebug information:\n".json_encode($s->__toArray());
-    }
     /**
      * @dataProvider dataProviderSimilarNumbers
+     *
+     * @param mixed $a
+     * @param mixed $b
      */
     public function testSuccessToFindSimilarity($a, $b)
     {
@@ -36,6 +41,9 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dataProviderApproximateNumbers
+     *
+     * @param mixed $a
+     * @param mixed $b
      */
     public function testSuccessToFindProximity($a, $b)
     {
@@ -46,6 +54,9 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dataProviderDistantNumbers
+     *
+     * @param mixed $a
+     * @param mixed $b
      */
     public function testSuccessToFindProximityWithDistantNumbers($a, $b)
     {
@@ -76,6 +87,7 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
             [1530, 1562],
         ];
     }
+
     public function dataProviderDistantNumbers()
     {
         return [
@@ -84,5 +96,10 @@ class SimilarNumberTest extends \PHPUnit_Framework_TestCase
             [155, 125],
             [1530, 1570],
         ];
+    }
+
+    protected function outputDebugInformation(SimilarNumber $s)
+    {
+        return "\nDebug information:\n".json_encode($s->__toArray());
     }
 }

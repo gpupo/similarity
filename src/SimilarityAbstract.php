@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity;
@@ -23,53 +26,6 @@ abstract class SimilarityAbstract
     protected $input;
 
     protected $accuracy;
-
-    protected function getAccuracy()
-    {
-        if (empty($this->accuracy)) {
-            $this->setAccuracy(self::ACCURACY_DEFAULT);
-        }
-
-        return $this->accuracy;
-    }
-
-    public function setAccuracy($number)
-    {
-        $this->accuracy = intval($number);
-
-        return $this;
-    }
-
-    public function isApproximate()
-    {
-        $calc = $this->getProximityCalculation();
-
-        if ($calc['difference'] <= $calc['limit']['maxDifference']) {
-            return true;
-        }
-
-        return false;
-    }
-
-    protected function getInput()
-    {
-        if (empty($this->input)) {
-            throw new \BadMethodCallException('Missing Input');
-        } elseif (!$this->input instanceof InputInterface) {
-            throw new \BadMethodCallException('Incompatible Input');
-        }
-
-        return $this->input;
-    }
-
-    protected function factoryExpert($name)
-    {
-        $expertObject = __NAMESPACE__.'\\Similar'.ucfirst($name);
-
-        $expert = new $expertObject($this->getInput(), $this->getAccuracy());
-
-        return $expert;
-    }
 
     public function __construct(InputInterface $input = null, $accuracy = null)
     {
@@ -90,10 +46,58 @@ abstract class SimilarityAbstract
     public function __toArray()
     {
         return [
-            'input'    => $this->input,
-            'first'    => $this->getInput()->getFirst(),
-            'second'   => $this->getInput()->getSecond(),
+            'input' => $this->input,
+            'first' => $this->getInput()->getFirst(),
+            'second' => $this->getInput()->getSecond(),
             'accuracy' => $this->getAccuracy(),
         ];
+    }
+
+    public function setAccuracy($number)
+    {
+        $this->accuracy = (int) $number;
+
+        return $this;
+    }
+
+    public function isApproximate()
+    {
+        $calc = $this->getProximityCalculation();
+
+        if ($calc['difference'] <= $calc['limit']['maxDifference']) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected function getAccuracy()
+    {
+        if (empty($this->accuracy)) {
+            $this->setAccuracy(self::ACCURACY_DEFAULT);
+        }
+
+        return $this->accuracy;
+    }
+
+    protected function getInput()
+    {
+        if (empty($this->input)) {
+            throw new \BadMethodCallException('Missing Input');
+        }
+        if (!$this->input instanceof InputInterface) {
+            throw new \BadMethodCallException('Incompatible Input');
+        }
+
+        return $this->input;
+    }
+
+    protected function factoryExpert($name)
+    {
+        $expertObject = __NAMESPACE__.'\\Similar'.ucfirst($name);
+
+        $expert = new $expertObject($this->getInput(), $this->getAccuracy());
+
+        return $expert;
     }
 }

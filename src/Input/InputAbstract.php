@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,23 +11,26 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity\Input;
 
 abstract class InputAbstract extends \ArrayObject
 {
-    public function __construct($first = null, $second = null,
-        array $costs = null)
-    {
-        if (is_array($first)) {
+    public function __construct(
+        $first = null,
+        $second = null,
+        array $costs = null
+    ) {
+        if (\is_array($first)) {
             $array = array_combine(['first', 'second', 'costs'], $first);
         } else {
             $array = [
-                'first'  => $first,
+                'first' => $first,
                 'second' => $second,
-                'costs'  => $costs,
+                'costs' => $costs,
             ];
         }
         parent::__construct($array, parent::ARRAY_AS_PROPS);
@@ -58,6 +63,11 @@ abstract class InputAbstract extends \ArrayObject
         return $this->get('stopwords');
     }
 
+    public function setCosts($value)
+    {
+        return $this->set('costs', $value);
+    }
+
     protected function constructCosts()
     {
         $defaultCosts = [1, 0, 1];
@@ -65,20 +75,15 @@ abstract class InputAbstract extends \ArrayObject
         return $this->setCostsByArray(($this->costs) ? $this->costs : $defaultCosts);
     }
 
-    public function setCosts($value)
-    {
-        return $this->set('costs', $value);
-    }
-
     protected function set($key, $value)
     {
-        $this->$key = $value;
+        $this->{$key} = $value;
     }
 
     protected function get($key)
     {
         if ($this->offsetExists($key)) {
-            return $this->$key;
+            return $this->{$key};
         }
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,13 +11,21 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity;
 
 class SimilarNumber extends SimilarityAbstract implements SimilarInterface
 {
+    public function __toArray()
+    {
+        return array_merge(parent::__toArray(), [
+            'proximityCalculation' => $this->getProximityCalculation(),
+        ]);
+    }
+
     public function hasSimilarity()
     {
         if ($this->isEquals()) {
@@ -41,7 +51,7 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
     public function getProximityCalculation()
     {
         $calc = [
-            'first'  => $this->getInput()->getFirst(),
+            'first' => $this->getInput()->getFirst(),
             'second' => $this->getInput()->getSecond(),
         ];
         $calc['limit'] = $this->getLimitOfProximity($calc['first'], $calc['second']);
@@ -53,19 +63,12 @@ class SimilarNumber extends SimilarityAbstract implements SimilarInterface
     protected function getLimitOfProximity($first, $second)
     {
         $calc = [
-            'chars'         => strlen($first.$second),
+            'chars' => \mb_strlen($first.$second),
             'multiplicator' => (10 - ($this->getAccuracy() / 10)),
         ];
 
         $calc['maxDifference'] = ($calc['chars'] * $calc['multiplicator']);
 
         return $calc;
-    }
-
-    public function __toArray()
-    {
-        return array_merge(parent::__toArray(), [
-            'proximityCalculation' => $this->getProximityCalculation(),
-        ]);
     }
 }

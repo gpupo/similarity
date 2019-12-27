@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity;
@@ -27,13 +30,9 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
 
     protected $expert;
 
-    protected function getMode()
+    public function __toArray()
     {
-        if ($this->mode === self::MODE_NUMBER) {
-            return self::MODE_NUMBER;
-        }
-
-        return self::MODE_STRING;
+        return  $this->getExpert()->__toArray();
     }
 
     public function setMode($mode)
@@ -71,6 +70,20 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
         return $this;
     }
 
+    public function hasSimilarity(): bool
+    {
+        return (bool) $this->getExpert()->hasSimilarity();
+    }
+
+    protected function getMode(): string
+    {
+        if (self::MODE_NUMBER === $this->mode) {
+            return self::MODE_NUMBER;
+        }
+
+        return self::MODE_STRING;
+    }
+
     protected function getExpert()
     {
         if (!$this->expert) {
@@ -78,15 +91,5 @@ class Similarity extends SimilarityAbstract implements SimilarInterface
         }
 
         return $this->expert;
-    }
-
-    public function hasSimilarity()
-    {
-        return $this->getExpert()->hasSimilarity();
-    }
-
-    public function __toArray()
-    {
-        return  $this->getExpert()->__toArray();
     }
 }

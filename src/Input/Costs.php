@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,23 +11,26 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity\Input;
 
 class Costs extends \ArrayObject
 {
-    public function __construct($first = null, $second = null,
-        array $third = null)
-    {
-        if (is_array($first)) {
+    public function __construct(
+        $first = null,
+        $second = null,
+        array $third = null
+    ) {
+        if (\is_array($first)) {
             $array = array_combine(['insertion', 'replacement', 'deletion'], $first);
         } else {
             $array = [
-                'insertion'   => $first,
+                'insertion' => $first,
                 'replacement' => $second,
-                'deletion'    => $third,
+                'deletion' => $third,
             ];
         }
 

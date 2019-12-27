@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,7 +11,8 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\Similarity;
@@ -17,10 +20,17 @@ namespace Gpupo\Tests\Similarity;
 use Gpupo\Similarity\Input\InputString;
 use Gpupo\Similarity\SimilarText;
 
-class SimilarTextTest extends \PHPUnit_Framework_TestCase
+/**
+ * @coversNothing
+ */
+class SimilarTextTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider dataProviderSimilarStrings
+     *
+     * @param mixed $a
+     * @param mixed $b
+     * @param mixed $percent
      */
     public function testSuccessToFindPercentageSimilarity($a, $b, $percent)
     {
@@ -32,6 +42,10 @@ class SimilarTextTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dataProviderTextsWithNoSimilarity
+     *
+     * @param mixed $a
+     * @param mixed $b
+     * @param mixed $percent
      */
     public function testSuccessToFindPercentageWithTextsWithNoSimilarity($a, $b, $percent)
     {
@@ -45,6 +59,10 @@ class SimilarTextTest extends \PHPUnit_Framework_TestCase
      * Check the Success to find the distance.
      *
      * @dataProvider dataProviderStringsWithDistance
+     *
+     * @param mixed $a
+     * @param mixed $b
+     * @param mixed $distance
      */
     public function testSuccessToFindTheLevenshteinDistance($a, $b, $distance)
     {

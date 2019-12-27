@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,26 +11,14 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity\Input;
 
 class InputString extends InputAbstract implements InputInterface
 {
-    protected function getCleanStringValue($key)
-    {
-        $d = new Decorator();
-        $value = $this->get($key);
-        $string = $d->stripIgnoredCharacters($value);
-
-        if ($this->getStopwords()) {
-            return $d->stripStopwords($string, $this->getStopwords());
-        }
-
-        return $string;
-    }
-
     public function getFirst()
     {
         return $this->getCleanStringValue('first');
@@ -42,5 +32,18 @@ class InputString extends InputAbstract implements InputInterface
     public function getCosts()
     {
         return $this->get('costs');
+    }
+
+    protected function getCleanStringValue($key)
+    {
+        $d = new Decorator();
+        $value = $this->get($key);
+        $string = $d->stripIgnoredCharacters($value);
+
+        if ($this->getStopwords()) {
+            return $d->stripStopwords($string, $this->getStopwords());
+        }
+
+        return $string;
     }
 }

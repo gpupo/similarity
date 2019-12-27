@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,13 +11,23 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Similarity;
 
 class SimilarText extends SimilarityAbstract
 {
+    public function __toArray()
+    {
+        return array_merge(parent::__toArray(), [
+            'percentage' => $this->getPercent(),
+            'isApproximate' => $this->isApproximate(),
+            'proximityCalculation' => $this->getProximityCalculation(),
+        ]);
+    }
+
     public function hasSimilarity()
     {
         if ($this->getPercent() > $this->getAccuracy()) {
@@ -59,7 +71,7 @@ class SimilarText extends SimilarityAbstract
     public function getProximityCalculation()
     {
         $calc = [
-            'first'  => $this->getInput()->getFirst(),
+            'first' => $this->getInput()->getFirst(),
             'second' => $this->getInput()->getSecond(),
         ];
         $calc['limit'] = $this->getLimitOfProximity($calc['first'], $calc['second']);
@@ -79,19 +91,6 @@ class SimilarText extends SimilarityAbstract
         return $calc;
     }
 
-    protected function getLimitOfProximity($first, $second)
-    {
-        $calc = [
-            'chars'       => strlen($first.$second),
-            'divider'     => (20 - ($this->getAccuracy() / 10)),
-            'hardDivider' => (12 - floor(($this->getAccuracy() / 10))),
-        ];
-
-        $calc['maxDifference'] = ($calc['chars'] / $calc['divider']);
-
-        return $calc;
-    }
-
     public function calculatePercent($stringA, $stringB)
     {
         $percent = 0;
@@ -105,9 +104,9 @@ class SimilarText extends SimilarityAbstract
         $a = [];
 
         foreach ([
-            [$stringA, strtolower($stringB)],
-            [strtolower($stringA), strtolower($stringB)],
-            [strtolower($stringA), $stringB],
+            [$stringA, mb_strtolower($stringB)],
+            [mb_strtolower($stringA), mb_strtolower($stringB)],
+            [mb_strtolower($stringA), $stringB],
         ] as $item) {
             $a[] = $this->calculatePercent($item[0], $item[1]);
         }
@@ -115,12 +114,16 @@ class SimilarText extends SimilarityAbstract
         return max($a);
     }
 
-    public function __toArray()
+    protected function getLimitOfProximity($first, $second)
     {
-        return array_merge(parent::__toArray(), [
-            'percentage'           => $this->getPercent(),
-            'isApproximate'        => $this->isApproximate(),
-            'proximityCalculation' => $this->getProximityCalculation(),
-        ]);
+        $calc = [
+            'chars' => \mb_strlen($first.$second),
+            'divider' => (20 - ($this->getAccuracy() / 10)),
+            'hardDivider' => (12 - floor(($this->getAccuracy() / 10))),
+        ];
+
+        $calc['maxDifference'] = ($calc['chars'] / $calc['divider']);
+
+        return $calc;
     }
 }

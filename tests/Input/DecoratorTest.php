@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of gpupo/similarity
  * Created by Gilmar Pupo <contact@gpupo.com>
@@ -9,17 +11,24 @@
  * LICENSE que é distribuído com este código-fonte.
  * Para obtener la información de los derechos de autor y la licencia debe leer
  * el archivo LICENSE que se distribuye con el código fuente.
- * For more information, see <https://www.gpupo.com/>.
+ * For more information, see <https://opensource.gpupo.com/>.
+ *
  */
 
 namespace Gpupo\Tests\Similarity\Input;
 
 use Gpupo\Similarity\Input\Decorator;
 
+/**
+ * @coversNothing
+ */
 class DecoratorTest extends TestCaseAbstract
 {
     /**
      * @dataProvider dataProviderStringsWithIgnoredCharacters
+     *
+     * @param mixed $string
+     * @param mixed $expected
      */
     public function testCleanCharacters($string, $expected)
     {
@@ -29,10 +38,13 @@ class DecoratorTest extends TestCaseAbstract
 
     /**
      * @dataProvider dataProviderNumbersWithIgnoredCharacters
+     *
+     * @param mixed $number
+     * @param mixed $expected
      */
     public function testCleanNumbers($number, $expected)
     {
         $d = new Decorator();
-        $this->assertSame(intval($expected), intval($d->onlyNumbers($number)));
+        $this->assertSame((int) $expected, (int) ($d->onlyNumbers($number)));
     }
 }
